@@ -19,6 +19,25 @@ module.exports.getTransactions = async (req, res) => {
     return Success(res, "data", formattedTransactions)
 }
 
+module.exports.getTransactionsByID = async (req, res) => {
+    let  data = await Transaction.findOne({id:req.params.id})
+    let formattedTransactions = {
+        id: data.id,
+        date: formatDate(data.date),
+        comments: data.Comments,
+    }
+    return Success(res, "data", formattedTransactions)
+}
+module.exports.updateTransactions = async (req, res) => {
+   
+    let data = await Transaction.findOneAndUpdate(
+        { id: req.params.id },
+        { $set: { Comments: req.body.comments } },
+        { returnDocument: 'after' }
+    );
+    return Success(res, "data", data)
+}
+
 module.exports.loadData = async (req, res) => {
     let data = await Transaction.insertMany(TransactionsData);
     return Created(res, "data uploaded", data)
