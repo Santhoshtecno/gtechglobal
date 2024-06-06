@@ -1,0 +1,16 @@
+<br>
+<div *ngIf="transaction">
+    <form (ngSubmit)="saveComments()">
+      <label for="id">ID</label>
+      <input type="text" id="id" name="Id" [(ngModel)]="transaction?.data.id" readonly>
+  
+      <label for="date">Date</label>
+      <input type="text" id="date" name="Date" [(ngModel)]="transaction?.data.date" readonly>
+  
+      <label for="comments">Comments</label>
+      <input type="text" id="comments" name="Comments" [(ngModel)]="transaction?.data.comments" required>
+  
+      <button type="submit">Save Comments</button>
+    </form>
+  </div>
+  

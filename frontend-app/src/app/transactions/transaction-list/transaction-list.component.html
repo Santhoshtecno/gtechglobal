@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Transaction List</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Comments</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions?.data">
+                <td>{{ transaction.ID }}</td>
+                <td>{{ transaction.Date }}</td>
+                <td>{{ transaction.Comments }}</td>
+                <td><a (click)="viewTransaction(transaction.ID)" class="cursor">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
